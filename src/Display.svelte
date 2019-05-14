@@ -1,5 +1,14 @@
 <script>
-  export let display = 0;
+  import { onDestroy } from 'svelte';
+  import { stack } from './Calculator.js';
+
+  let display = 0;
+
+  const unsubscribe = stack.subscribe(({ left, op, right }) => {
+    display = (op && right) ? right : left;
+  })
+
+  onDestroy(unsubscribe);
 </script>
 
 <style>

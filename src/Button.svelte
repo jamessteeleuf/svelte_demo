@@ -1,5 +1,5 @@
 <script>
-  export let label, height = 1, width = 1, alternative = false;
+  export let label, height = 1, width = 1, alternative = false, press;
 </script>
 
 <style>
@@ -34,9 +34,10 @@
   }
 </style>
 
-<section style="
-  grid-row: span {height};
-  grid-column: span {width};
-" class={alternative ? 'alternative' : 'primary'}>
+<section
+  style="grid-row: span {height}; grid-column: span {width};"
+  class={alternative ? 'alternative' : 'primary'}
+  on:click={press(label)}
+>
   <div>{label}</div>
 </section>
